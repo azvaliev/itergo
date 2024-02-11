@@ -60,3 +60,13 @@ func TestAllPrimeNumbers(t *testing.T) {
 		t.Error("Should not reach here, all prime numbers")
 	}
 }
+
+func TestAllArray(t *testing.T) {
+	expectedArray := [4]string{"a", "b", "c", "d"}
+
+	if !All(expectedArray[:], func(item string, idx int) bool {
+		return true
+	}) {
+		t.Error("Should not reach here, all true")
+	}
+}
