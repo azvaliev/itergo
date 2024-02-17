@@ -1,5 +1,9 @@
 # itergo
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/azvaliev/itergo.svg)](https://pkg.go.dev/github.com/azvaliev/itergo)
+[![Go Report Card](https://goreportcard.com/badge/github.com/azvaliev/itergo)](https://goreportcard.com/report/github.com/azvaliev/itergo)
+![License](https://img.shields.io/github/license/azvaliev/itergo)
+
 Collection of functional-style array iteration functions for Go.
 Should be familiar to users of languages like JavaScript, Python, Ruby, C#.
 
