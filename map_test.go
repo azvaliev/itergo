@@ -1,13 +1,14 @@
-package itergo
+package itergo_test
 
 import (
+	"github.com/azvaliev/itergo"
 	"github.com/azvaliev/itergo/testutils"
 	"testing"
 )
 
 func TestKeepIdentical(t *testing.T) {
 	expectedSlice := []int{5, 6, 7, 8}
-	gotSlice := Map(expectedSlice, func(item int, idx int) int {
+	gotSlice := itergo.Map(expectedSlice, func(item int, idx int) int {
 		return item
 	})
 
@@ -23,7 +24,7 @@ func TestMapToIndices(t *testing.T) {
 	testSlice := []string{"a", "b", "c", "d"}
 
 	expectedSlice := []int{0, 1, 2, 3}
-	gotSlice := Map(testSlice, func(item string, idx int) int {
+	gotSlice := itergo.Map(testSlice, func(item string, idx int) int {
 		return idx
 	})
 
@@ -45,7 +46,7 @@ func TestMapStructProperty(t *testing.T) {
 	}
 
 	expectedSlice := []string{"Alice", "Bob", "Charlie"}
-	gotSlice := Map(testSlice, func(item Person, idx int) string {
+	gotSlice := itergo.Map(testSlice, func(item Person, idx int) string {
 		return item.Name
 	})
 
@@ -58,7 +59,7 @@ func TestMapArray(t *testing.T) {
 	testSlice := [3]int{1, 2, 3}
 
 	expectedSlice := [3]int{2, 4, 6}
-	gotSlice := Map(testSlice[:], func(item int, idx int) int {
+	gotSlice := itergo.Map(testSlice[:], func(item int, idx int) int {
 		return item * 2
 	})
 

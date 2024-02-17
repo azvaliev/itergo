@@ -1,6 +1,7 @@
-package itergo
+package itergo_test
 
 import (
+	"github.com/azvaliev/itergo"
 	"github.com/azvaliev/itergo/testutils"
 	"testing"
 )
@@ -8,7 +9,7 @@ import (
 func TestFilterAllTrue(t *testing.T) {
 	expectedSlice := []int{1, 2, 3, 4, 5}
 
-	gotSlice := Filter(expectedSlice, func(item int, idx int) bool {
+	gotSlice := itergo.Filter(expectedSlice, func(item int, idx int) bool {
 		return item > 0
 	})
 
@@ -20,7 +21,7 @@ func TestFilterAllTrue(t *testing.T) {
 func TestFilterAllFalse(t *testing.T) {
 	expectedSlice := []int{1, 2, 3, 4, 5}
 
-	gotSlice := Filter(expectedSlice, func(item int, idx int) bool {
+	gotSlice := itergo.Filter(expectedSlice, func(item int, idx int) bool {
 		return false
 	})
 
@@ -30,7 +31,7 @@ func TestFilterAllFalse(t *testing.T) {
 }
 
 func TestFilterEmptySlice(t *testing.T) {
-	gotSlice := Filter([]int{}, func(item int, idx int) bool {
+	gotSlice := itergo.Filter([]int{}, func(item int, idx int) bool {
 		return true
 	})
 
@@ -55,7 +56,7 @@ func TestFilterStructProperty(t *testing.T) {
 		{"Alice", 25},
 		{"Bob", 30},
 	}
-	gotSlice := Filter(testSlice, func(item Person, idx int) bool {
+	gotSlice := itergo.Filter(testSlice, func(item Person, idx int) bool {
 		return item.Age < 35
 	})
 
