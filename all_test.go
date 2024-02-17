@@ -1,10 +1,33 @@
 package itergo_test
 
 import (
+	"fmt"
 	"github.com/azvaliev/itergo"
 	"math/big"
 	"testing"
 )
+
+func ExampleAll() {
+	// Let's check that all numbers in this slice are even
+	slice := []int{2, 4, 6, 8, 10}
+
+	allEven := itergo.All(slice, func(item int, idx int) bool {
+		return item%2 == 0
+	})
+	fmt.Println(allEven)
+	// Output: true
+}
+
+func ExampleAll_false() {
+	// Let's check that all strings in this slice are non-empty
+	slice := []string{"a", "b", "c", "d", ""}
+
+	allNonEmpty := itergo.All(slice, func(item string, idx int) bool {
+		return item != ""
+	})
+	fmt.Println(allNonEmpty)
+	// Output: false
+}
 
 func TestAllCorrectOrderAndIndex(t *testing.T) {
 	expectedSlice := []int{1, 2, 3, 4}

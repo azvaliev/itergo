@@ -1,9 +1,23 @@
 package itergo_test
 
 import (
+	"fmt"
 	"github.com/azvaliev/itergo"
 	"testing"
 )
+
+func ExampleContains() {
+	// Let's check if this slice contains the number 3
+	slice := []int{1, 2, 3, 4, 5}
+
+	containsThree := itergo.Contains(slice, 3)
+	if containsThree {
+		fmt.Println("The slice contains the number 3")
+	} else {
+		fmt.Println("The slice does not contain the number 3")
+	}
+	// Output: The slice contains the number 3
+}
 
 func TestContains(t *testing.T) {
 	shouldHaveThree := itergo.Contains([]int{1, 2, 3, 4, 5}, 3)

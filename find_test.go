@@ -1,9 +1,38 @@
 package itergo_test
 
 import (
+	"fmt"
 	"github.com/azvaliev/itergo"
 	"testing"
 )
+
+func ExampleFind() {
+	// Let's say we have an array of nodes and we want to find a node with a certain ID
+	type Node struct {
+		ID       int
+		Children []int
+	}
+	array := []Node{
+		{1, []int{2, 3}},
+		{2, []int{4, 5}},
+		{3, []int{6, 7}},
+		// ...
+	}
+
+	// In the filter function, we return true if the node's ID is 3
+	node, idx := itergo.Find(array, func(node Node, idx int) bool {
+		return node.ID == 3
+	})
+
+	// If the node is found, node will contain the found node and idx will contain its index
+	// Otherwise, it returns -1
+	if idx != -1 {
+		fmt.Println("Found node", node)
+	} else {
+		fmt.Println("Node not found")
+	}
+	// Output: Found node {3 [6 7]}
+}
 
 func TestFindEmpty(t *testing.T) {
 	var empty []int

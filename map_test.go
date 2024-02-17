@@ -1,10 +1,30 @@
 package itergo_test
 
 import (
+	"fmt"
 	"github.com/azvaliev/itergo"
 	"github.com/azvaliev/itergo/testutils"
 	"testing"
 )
+
+func ExampleMap() {
+	// Let's say we have a slice of users and we just want a slice of usernames
+	type User struct {
+		Username string
+		Id       string
+	}
+	users := []User{
+		{Username: "alice"},
+		{Username: "bob"},
+	}
+
+	usernames := itergo.Map(users, func(user User, idx int) string {
+		// Whatever we return here will be added to the new slice, maintaining the order
+		return user.Username
+	})
+	fmt.Println(usernames)
+	// Output: [alice bob]
+}
 
 func TestKeepIdentical(t *testing.T) {
 	expectedSlice := []int{5, 6, 7, 8}
